@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage, ActivityIndicator } from 'react-native';
-import Repository from './components/repository';
+import Repository from './components/Repository';
 import api from 'services/api';
 
 import styles from './styles';
