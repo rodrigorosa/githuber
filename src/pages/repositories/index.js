@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  AsyncStorage,
+  FlatList,
+  RefreshControl,
+  ActivityIndicator,
+
+ } from 'react-native';
 import Repository from './components/Repository';
 import api from 'services/api';
 
@@ -9,15 +17,18 @@ export default class Repositories extends Component {
   state = {
     repositories: [],
     loading: false,
+    refreshing: false,
   };
 
   componentWillMount() {
-    this.loadRepositories();
+    this.setState({ loading: true });
+    this.loadRepositories().then(() => {
+      this.setState({ loading: false });
+    });
   }
 
   loadRepositories = async () => {
-    console.tron.log('loading repositories');
-    this.setState({ loading: true });
+    this.setState({ refreshing: true });
 
     const username = await AsyncStorage.getItem('@Githuber:username');
     const response = await api.get(`/users/${username}/repos`);
@@ -25,13 +36,21 @@ export default class Repositories extends Component {
     console.tron.log(`username: ${username}`);
     console.tron.log(response.data);
 
-    this.setState({ repositories: response.data, loading: false });
+    this.setState({ repositories: response.data, refreshing: false });
   };
 
   renderRepositories = () => (
-    this.state.repositories.map(repo => (
-      <Repository key={repo.id} repository={repo} />
-    ))
+    <FlatList
+      refreshControl={
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this.loadRepositories}
+        />
+      }
+      data={this.state.repositories}
+      keyExtractor={repository => repository.id}
+      renderItem={({ item }) => <Repository repository={item} /> }
+    />
   );
 
   renderList = () => (
@@ -44,7 +63,7 @@ export default class Repositories extends Component {
     return (
       <View style={styles.container}>
         { this.state.loading
-        ? <ActivityIndicator size="small" color="#999" />
+        ? <ActivityIndicator size="small" color="#999" style={styles.loading} />
         : this.renderList()
       }
       </View>
