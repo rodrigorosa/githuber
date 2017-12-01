@@ -28,7 +28,7 @@ export default class App extends Component {
     if (!userChecked) return null;
 
     const Layout = createRootNavigator(userExists);
-    return <Layout />;    
+    return <Layout />;
   }
 }
 
