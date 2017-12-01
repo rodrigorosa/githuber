@@ -6,8 +6,7 @@ import {
   FlatList,
   RefreshControl,
   ActivityIndicator,
-
- } from 'react-native';
+} from 'react-native';
 import Repository from './components/Repository';
 import api from 'services/api';
 
@@ -32,9 +31,6 @@ export default class Repositories extends Component {
 
     const username = await AsyncStorage.getItem('@Githuber:username');
     const response = await api.get(`/users/${username}/repos`);
-
-    console.tron.log(`username: ${username}`);
-    console.tron.log(response.data);
 
     this.setState({ repositories: response.data, refreshing: false });
   };
