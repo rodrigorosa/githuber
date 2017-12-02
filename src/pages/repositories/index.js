@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import api from 'services/api';
+
 import {
   View,
   Text,
@@ -7,12 +9,18 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from 'react-native';
-import Repository from './components/Repository';
-import api from 'services/api';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Repository from './components/Repository';
 import styles from './styles';
 
 export default class Repositories extends Component {
+  static navigationOptions = {
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="list-alt" size={20} color={tintColor} />
+    ),
+  };
+
   state = {
     repositories: [],
     loading: false,
