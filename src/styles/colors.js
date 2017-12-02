@@ -1,5 +1,5 @@
 export default {
-  white:'#FFF',
+  white: '#FFF',
   light: '#EEE',
   dark: '#666',
   darker: '#444',
@@ -8,4 +8,4 @@ export default {
   primary: '#444A5A',
   secondary: '#7A91CA',
   background: '#FBFAFF',
-}
+};

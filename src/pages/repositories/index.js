@@ -29,6 +29,7 @@ export default class Repositories extends Component {
 
   componentWillMount() {
     this.setState({ loading: true });
+
     this.loadRepositories().then(() => {
       this.setState({ loading: false });
     });
@@ -40,7 +41,10 @@ export default class Repositories extends Component {
     const username = await AsyncStorage.getItem('@Githuber:username');
     const response = await api.get(`/users/${username}/repos`);
 
-    this.setState({ repositories: response.data, refreshing: false });
+    this.setState({
+      repositories: response.data,
+      refreshing: false,
+    });
   };
 
   renderRepositories = () => (
@@ -53,23 +57,23 @@ export default class Repositories extends Component {
       }
       data={this.state.repositories}
       keyExtractor={repository => repository.id}
-      renderItem={({ item }) => <Repository repository={item} /> }
+      renderItem={({ item }) => <Repository repository={item} />}
     />
   );
 
   renderList = () => (
     this.state.repositories.length
       ? this.renderRepositories()
-      : <Text style={styles.empty}> Nenhum repositório encontrado</Text>
+      : <Text style={styles.empty}>Nenhum repositório encontrado</Text>
   );
 
   render() {
     return (
       <View style={styles.container}>
         { this.state.loading
-        ? <ActivityIndicator size="small" color="#999" style={styles.loading} />
-        : this.renderList()
-      }
+          ? <ActivityIndicator size="small" color="#999" style={styles.loading} />
+          : this.renderList()
+        }
       </View>
     );
   }

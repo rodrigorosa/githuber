@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     fontSize: fonts.small,
     marginLeft: 5,
   },
-
 });
 
 export default styles;

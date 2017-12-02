@@ -20,7 +20,8 @@ const createRootNavigator = (userExists = false) =>
         animationEnabled: true,
         tabBarPosition: 'bottom',
         tabBarOptions: {
-          showLabel: true,
+          showLabel: false,
+          showIcon: true,
           activeTintColor: colors.white,
           inactiveTintColor: colors.inactive,
           style: {
@@ -34,6 +35,6 @@ const createRootNavigator = (userExists = false) =>
     navigationOptions: {
       header: props => <Header {...props} />,
     },
-});
+  });
 
 export default createRootNavigator;

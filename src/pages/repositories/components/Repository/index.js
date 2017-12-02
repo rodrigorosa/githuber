@@ -10,7 +10,7 @@ export default class Repository extends Component {
   static propTypes = {
     repository: PropTypes.shape({
       full_name: PropTypes.string,
-      starsgazers_count: PropTypes.number,
+      stargazers_count: PropTypes.number,
       forks_count: PropTypes.number,
       watchers_count: PropTypes.number,
     }).isRequired,
@@ -18,26 +18,23 @@ export default class Repository extends Component {
 
   render() {
     const { repository } = this.props;
+
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{ repository.full_name }</Text>
+        <Text style={styles.title}>{repository.full_name}</Text>
         <View style={styles.infoContainer}>
-
           <View style={styles.info}>
             <Icon name="star" size={14} style={styles.infoIcon} />
-            <Text style={styles.infoText}>{ repository.stargazers_count }</Text>
+            <Text style={styles.infoText}>{repository.stargazers_count}</Text>
           </View>
-
           <View style={styles.info}>
             <Icon name="code-fork" size={14} style={styles.infoIcon} />
-            <Text style={styles.infoText}>{ repository.forks_count }</Text>
+            <Text style={styles.infoText}>{repository.forks_count}</Text>
           </View>
-
           <View style={styles.info}>
             <Icon name="eye" size={14} style={styles.infoIcon} />
-            <Text style={styles.infoText}>{ repository.watchers_count }</Text>
+            <Text style={styles.infoText}>{repository.watchers_count}</Text>
           </View>
-
         </View>
       </View>
     );

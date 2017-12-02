@@ -18,22 +18,23 @@ export default class Welcome extends Component {
     navigation: PropTypes.shape({
       dispatch: PropTypes.func,
     }).isRequired,
-  }
+  };
 
   static navigationOptions = {
     header: null,
-  }
+  };
 
   state = {
-    username: '',
-    error: false,
     loading: false,
+    error: false,
+    username: '',
   };
 
   checkAndSaveUser = async () => {
     const response = await api.get(`/users/${this.state.username}`);
 
-    if(!response.ok) throw Error();
+    if (!response.ok) throw Error();
+
     await AsyncStorage.setItem('@Githuber:username', this.state.username);
   }
 
@@ -58,7 +59,7 @@ export default class Welcome extends Component {
       .catch(() => {
         this.setState({ error: true, loading: false });
       });
-  }
+  };
 
   render() {
     return (
@@ -72,9 +73,9 @@ export default class Welcome extends Component {
 
         <TextInput
           autoCapitalize="none"
-          autoCorrect={ false }
+          autoCorrect={false}
           style={styles.input}
-          onChangeText={ (username) => { this.setState({ username }); }}
+          onChangeText={(username) => { this.setState({ username });} }
           placeholder="Digite o seu usuário" 
         />
 

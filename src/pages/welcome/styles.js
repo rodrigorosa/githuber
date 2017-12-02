@@ -29,10 +29,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     alignSelf: 'stretch', // ocupa todo espaço horizontal
     height: 44,
-    borderRadius: 3,
-    marginTop: 10,
+    lineHeight: 44,
     fontSize: fonts.small,
+    color: colors.dark,
+    borderRadius: 3,
     paddingHorizontal: 20,
+    marginTop: 20,
   },
 
   button: {
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: fonts.small,
     color: colors.white,
-    fontWeight: 'bold',    
+    fontWeight: 'bold',
   },
 
   error: {

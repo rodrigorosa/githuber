@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
+import { NavigationActions } from 'react-navigation';
+import { colors } from 'styles';
+
+import { View, Text, TouchableOpacity, AsyncStorage } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
-import { colors } from 'styles';
 
 export default class Header extends Component {
   static propTypes = {

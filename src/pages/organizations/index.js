@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from 'services/api';
 
-import { Text, ScrollView, AsyncStorage, ActivityIndicator  } from 'react-native';
+import { Text, ScrollView, AsyncStorage, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Organization from './components/Organization';

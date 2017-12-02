@@ -5,7 +5,7 @@ const api = create({
   headers: {
     Accept: 'application/vnd.github.v3+json',
     'User-Agent': 'Githuber',
-  }
+  },
 });
 
 export default api;
