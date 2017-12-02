@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
+  loading: {
+    marginTop: 20,
+  },
 });
 
 export default styles;
